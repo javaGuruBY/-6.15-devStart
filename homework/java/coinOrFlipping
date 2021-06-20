@@ -7,6 +7,8 @@ public class Сoin {
             System.out.println("Орел");
         else
             System.out.println("Решка");
-        //Ивлеева супер!
+
+        System.out.println("Удачи в следующий раз!");
+
     }
 }
