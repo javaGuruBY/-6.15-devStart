@@ -17,4 +17,8 @@ public class StringAnalyserService {
         words.removeIf(s ->s.equals(""));
         return words;
     }
+
+    public int countWords(String originalText){
+        return splitStringIntoWords(originalText).size();
+    }
 }
