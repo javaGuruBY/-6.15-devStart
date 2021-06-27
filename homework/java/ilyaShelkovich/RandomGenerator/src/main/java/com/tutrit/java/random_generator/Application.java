@@ -11,8 +11,7 @@ public class Application {
     public static void main(String[] args) {
         var randomGeneratorService = new RandomGeneratorService();
 
-        randomGeneratorService.printGeneratedNums();
-        randomGeneratorService.printSumOfGeneratedNums();
+        randomGeneratorService.run();
 
     }
 }

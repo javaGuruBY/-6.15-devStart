@@ -7,40 +7,32 @@ import org.slf4j.LoggerFactory;
 public class RandomGeneratorService {
 
     Logger log = LoggerFactory.getLogger(RandomGeneratorService.class);
-    //1. Сгенерировать 3 случайных числа и вывести их на экран.
-    Random random = new Random();
 
-    public int firstNumGenerator() {
-        return random.nextInt(100);
+    public int generateRandomNumber(int n) {
+        Random random = new Random();
+        return random.nextInt(n);
     }
 
-    public int secondNumGenerator() {
-        return random.nextInt(100);
+    public void printTheNumber(int a) {
+        log.info("{}", a);
     }
 
-    public int thirdNumGenerator() {
-        return random.nextInt(100);
+    public int sumOfNumbers(int a, int b, int c) {
+        return a + b + c;
     }
 
-    public void printGeneratedNums() {
-        log.info("{}", firstNumGenerator());
-        log.info("{}", secondNumGenerator());
-        log.info("{}", thirdNumGenerator());
+    public void run() {
+        int a = generateRandomNumber(10);
+        int b = generateRandomNumber(10);
+        int c = generateRandomNumber(10);
+
+        printTheNumber(a);
+        printTheNumber(b);
+        printTheNumber(c);
+
+        int sum = sumOfNumbers(a, b, c);
+
+        printTheNumber(sum);
+
     }
-    //2. Посчитать сумму этих чисел и вывести результат на экран.
-
-    // заново вызывает работу методов, переписать.
-    public int sumOfGeneratedNums() {
-        return firstNumGenerator() + secondNumGenerator() + thirdNumGenerator();
-    }
-
-    public void printSumOfGeneratedNums() {
-        log.info("{}", sumOfGeneratedNums());
-    }
-
-      /*  тесты:
-    1. подтвердить что числа рандомные, сделать так чтобы числа не повторялись
-    2. подтвердить что числа в заданных границах
-
-       */
 }
