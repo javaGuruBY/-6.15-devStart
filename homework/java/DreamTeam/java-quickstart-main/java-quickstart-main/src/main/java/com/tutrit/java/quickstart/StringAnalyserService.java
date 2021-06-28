@@ -6,15 +6,31 @@ import java.util.List;
 
 public class StringAnalyserService {
 
-    public List<String > splitStringIntoWords(String originalText) {
+    public List<String> splitStringIntoWords(String originalText) {
         List<String> words = new ArrayList(Arrays.asList(originalText.split("(\\p{Punct})|(\\p{Blank})|(\\p{Digit})|(\\n)")));
-        words.removeIf(s ->s.equals(""));
+        words.removeIf(s -> s.equals(""));
         return words;
     }
 
     public List<String> splitStringIntoPunctuationMarks(String originalText) {
         List<String> words = new ArrayList(Arrays.asList(originalText.split("(\\p{Alpha})|(\\p{Blank})|(\\p{Digit})|(\\n)")));
-        words.removeIf(s ->s.equals(""));
+        words.removeIf(s -> s.equals(""));
         return words;
+    }
+
+    public List<String> splitStringIntoPunctuationMarks(String originalText) {
+        List<String> words = new ArrayList(Arrays.asList(originalText.split("(\\p{Alpha})|(\\p{Blank})|(\\p{Digit})|(\\n)")));
+        words.removeIf(s -> s.equals(""));
+        return words;
+
+    }
+
+    public int CountingWordsInText(String originalText) {
+        return ValyaWords.splitStringIntoWords(originalText).size();
+
+    }
+
+    public int CountingCommas(String orinalText) {
+        return ValyaWords.splitStringIntoPunctuationMarks(originalText).size();
     }
 }
