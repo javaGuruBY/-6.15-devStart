@@ -1,0 +1,14 @@
+public class Сoin {
+    public static void main(String args[])
+    {
+        System.out.println("Ивлеева подбрасывает монетку:");
+        int num=(int)(20*Math.random());
+        if (num<10)
+            System.out.println("Орел");
+        else
+            System.out.println("Решка");
+
+        System.out.println("Удачи в следующий раз!");
+
+    }
+}
