@@ -1,6 +1,7 @@
 package com.tutrit.java.quickstart.service;
 
 import com.tutrit.java.quickstart.bean.User;
+import java.awt.print.Pageable;
 
 public class LoginService {
     public boolean checkUserPassword(User user, String userInput) {
@@ -19,10 +20,18 @@ public class LoginService {
             blockUser(user);
         }
         reduceLoginAttempts(user);
-        return checkUserPassword(user, userInput);
+        boolean result = checkUserPassword(user, userInput);
+        if (result){
+            restoreAttempts(user);
+        }
+        return result;
     }
 
     public void blockUser(User user) {
         user.setBlocked(true);
+    }
+
+    public void restoreAttempts(User user) {
+        user.setLoginAttempts(3);
     }
 }
