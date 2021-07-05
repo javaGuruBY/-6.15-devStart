@@ -89,4 +89,19 @@ public class StringAnalyserServiceTest {
         assertNotEquals(expected,actual);
     }
 
+    @Test
+    public void CountingWordsInText_Positve(){
+        int actual = stringAnalyserService.CountingWordsInText(originalText);
+        int expected = 15;
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    public void CountingWordsInText_Negative() {
+        int actual = stringAnalyserService.CountingWordsInText(originalText);
+        int expected = 16;
+        assertEquals(expected, actual);
+    }
+
 }
