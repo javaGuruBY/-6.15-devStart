@@ -26,12 +26,25 @@ public class ReplayKeyboardService {
         return keyBoardMarkup;
     }
 
+    public ReplyKeyboardMarkup getContact() {
+        ReplyKeyboardMarkup keyBoardMarkup = new ReplyKeyboardMarkup();
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        KeyboardRow row = new KeyboardRow();
+        KeyboardButton keyboardButton = new KeyboardButton();
+        keyboardButton.setText("Отправить контакт!").setRequestContact(true);
+        row.add(keyboardButton);
+        keyboard.add(row);
+        keyBoardMarkup.setKeyboard(keyboard);
+        keyBoardMarkup.setResizeKeyboard(true);
+        return keyBoardMarkup;
+    }
+
     public ReplyKeyboardMarkup getYesOrNo() {
         ReplyKeyboardMarkup keyBoardMarkup = new ReplyKeyboardMarkup();
         List<KeyboardRow> keyboard = new ArrayList<>();
         KeyboardRow row = new KeyboardRow();
-        row.add("Да!");
-        row.add("Нет!");
+        row.add("Подтвердить!");
+        row.add("Отмена!");
         keyboard.add(row);
         keyBoardMarkup.setKeyboard(keyboard);
         keyBoardMarkup.setResizeKeyboard(true);

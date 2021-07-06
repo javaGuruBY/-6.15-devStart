@@ -39,11 +39,15 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        choiceOfAnswer(update);
+    }
+
+    private void choiceOfAnswer(Update update) {
         if(update.hasMessage() && update.getMessage().hasText()) {
             switch (update.getMessage().getText()) {
                 case "/start":
                     messageService.sendMessage(getChatId(update), START_MESSAGE,
-                            inlineKeyboardSource.getKeyboardMain(), replayKeyboardService.getReplayKeyboardMain());
+                            inlineKeyboardSource.getKeyboardMain(), replayKeyboardService.getContact());
                     break;
                 case "Описание":
                     messageService.sendMessage(getChatId(update), DESCRIPTION_MESSAGE);
@@ -54,6 +58,14 @@ public class TelegramBot extends TelegramLongPollingBot {
                 case "Начать запись!":
                     messageService.sendMessage(getChatId(update), SELECTION_OF_THE_MONTH,
                             inlineKeyboardSource.getKeyboardMonth());
+                    break;
+                case "Подтвердить!":
+                    messageService.sendMessage(getChatId(update), CONFIRMATION,
+                            replayKeyboardService.getReplayKeyboardMain());
+                    break;
+                case "Отмена!":
+                    messageService.sendMessage(getChatId(update), CANCEL,
+                            replayKeyboardService.getReplayKeyboardMain());
                     break;
                 default:
                     messageService.sendMessage(getChatId(update), "Do no!", replayKeyboardService.getReplayKeyboardMain());
@@ -74,126 +86,67 @@ public class TelegramBot extends TelegramLongPollingBot {
                     messageService.sendMessage(getChatId(update),SELECTION_OF_THE_DAY,
                             inlineKeyboardSource.getKeyboardDay(countDay(month)));
                     break;
+                case "/hour900" :
+                case "/hour930" :
+                case "/hour1000" :
+                case "/hour1030" :
+                case "/hour1100" :
+                case "/hour1130" :
+                case "/hour1200" :
+                case "/hour1230" :
+                case "/hour1300" :
+                case "/hour1330" :
+                case "/hour1400" :
+                case "/hour1430" :
+                case "/hour1500" :
+                case "/hour1530" :
+                case "/hour1600" :
+                case "/hour1630" :
+                case "/hour1700" :
+                case "/hour1730" :
+                case "/hour1800" :
+                case "/hour1830" :
+                case "/hour1900" :
+                case "/hour1930" :
+                case "/hour2000" :
+                case "/hour2030" :
+                case "/hour2100" :
+                case "/hour2130" :
+                case "/hour2200" :
+                    //saveFile(update);
+                    messageService.sendMessage(getChatId(update),CONFIRM_ENTRY_MESSAGE + "15 июля в 17:00-17:30 ",
+                            replayKeyboardService.getYesOrNo());
+                    break;
                 case "/day1" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day2" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day3" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day4" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day5" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day6" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day7" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day8" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day9" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day10" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day11" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day12" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day13" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day14" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day15" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day16" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day17" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day18" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day19" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day20" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day21" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day22" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day23" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day24" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day25" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day26" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day27" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day28" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day29" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day30" :
-                    messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
-                            inlineKeyboardSource.getKeyboardHour());
-                    break;
                 case "/day31" :
                     messageService.sendMessage(getChatId(update),SELECTION_OF_THE_HOUR,
                             inlineKeyboardSource.getKeyboardHour());
@@ -202,9 +155,12 @@ public class TelegramBot extends TelegramLongPollingBot {
                     messageService.sendMessage(getChatId(update),"Contact!", inlineKeyboardSource.getKeyboardMain());
                     break;
                 default:
-                    messageService.sendMessage(getChatId(update),"Do no!", inlineKeyboardSource.getKeyboardMain(), replayKeyboardService.getYesOrNo());
+                    messageService.sendMessage(getChatId(update),"Do no!", inlineKeyboardSource.getKeyboardMain(), replayKeyboardService.getReplayKeyboardMain());
                     break;
             }
+        }
+        else if (update.hasMessage() && update.getMessage().hasContact()){
+            messageService.sendMessage(getChatId(update),"Авторизация прошла успешно!", replayKeyboardService.getReplayKeyboardMain());
         }
     }
 
@@ -219,16 +175,20 @@ public class TelegramBot extends TelegramLongPollingBot {
             return update.getMessage().getChatId();
         else if (update.hasCallbackQuery())
             return update.getCallbackQuery().getMessage().getChatId();
+        else if (update.getMessage().hasContact()){
+            return update.getMessage().getChatId();
+        }
         return null;
     }
 
     private void saveJson(Update update) {
         try{
-            objectMapper.writeValue(new File("src/test/resources/update.json"), update);
+            objectMapper.writeValue(new File("src/test/resources/contact.json"), update);
         }catch (IOException e){
             e.printStackTrace();
         }
     }
+
 
     @Override
     public String getBotUsername() {
