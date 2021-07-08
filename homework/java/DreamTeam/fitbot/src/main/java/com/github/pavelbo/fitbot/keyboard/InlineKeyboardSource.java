@@ -108,8 +108,7 @@ public class InlineKeyboardSource {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> keyboardRows = new ArrayList<>();
         InlineKeyboardButton[] buttons = new InlineKeyboardButton[buttonName.length];
-        int i;
-        for (i = 0; i < buttons.length; i++) {
+        for (int i = 0; i < buttons.length; i++) {
             buttons[i] = new InlineKeyboardButton();
             buttons[i].setText(buttonText[i] + i).setCallbackData(buttonName[i]);
             List<InlineKeyboardButton> keyboard = new ArrayList<>();
